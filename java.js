@@ -45,15 +45,17 @@ Telegram.WebApp.onEvent("mainButtonClicked", function () {
 });
 
 let usercard = document.getElementById("usercard");
+let src = document.getElementById("image");
 
 let p = document.createElement("p");
-let image = document.createElement("img");
+let img = document.createElement("img");
 
 
 p.innerText = `${tg.initDataUnsafe.user.first_name}
 ${tg.initDataUnsafe.user.last_name}`;
 
-image.src = user.photo_url
+img.src = user.photo_url
+
 
 usercard.appendChild(p);
-usercard.appendChild(image); 
+src.appendChild(img);
