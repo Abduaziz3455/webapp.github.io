@@ -37,7 +37,7 @@ Telegram.WebApp.onEvent("mainButtonClicked", function(){
   fetch('https://api.ipify.org?format=json')
   .then(response => response.json())
   .then(data => {
-    tg.sendData(data.ip, item);
+    tg.sendData(`${data.ip} ${item}`);
   });
 });
 
