@@ -36,13 +36,7 @@ btn2.addEventListener("click", function(){
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  fetch('https://api.ipify.org?format=json')
-  .then(response => response.json())
-  .then(data => {
-    tg.sendData(item);
-    tg.sendData(data.ip);
-  });
-  
+  tg.sendData(item);  
 });
 
 let usercard = document.getElementById("usercard");
