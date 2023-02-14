@@ -2,6 +2,9 @@
 
 
 let tg = window.Telegram.WebApp;
+let user = tg.WebAppUser;
+
+tg.expand();
 
 tg.MainButton.textColor = "#FFFFFF";
 tg.MainButton.color = "#2cab37";
@@ -11,7 +14,7 @@ let item = "";
 let btn1 = document.getElementById("btn1");
 let btn2 = document.getElementById("btn2");
 
-btn1.addEventListener("click", function(){
+btn1.addEventListener("click", function () {
 	if (tg.MainButton.isVisible) {
 		tg.MainButton.hide();
 	}
@@ -22,7 +25,7 @@ btn1.addEventListener("click", function(){
 	}
 });
 
-btn2.addEventListener("click", function(){
+btn2.addEventListener("click", function () {
 	if (tg.MainButton.isVisible) {
 		tg.MainButton.hide();
 	}
@@ -33,20 +36,24 @@ btn2.addEventListener("click", function(){
 	}
 });
 
-Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  fetch('https://api.ipify.org?format=json')
-  .then(response => response.json())
-  .then(data => {
-    tg.sendData(`${data.ip} ${item}`);
-  });
+Telegram.WebApp.onEvent("mainButtonClicked", function () {
+	fetch('https://api.ipify.org?format=json')
+		.then(response => response.json())
+		.then(data => {
+			tg.sendData(`${data.ip} ${item}`);
+		});
 });
 
 let usercard = document.getElementById("usercard");
 
 let p = document.createElement("p");
+let image = document.createElement("img");
+
 
 p.innerText = `${tg.initDataUnsafe.user.first_name}
 ${tg.initDataUnsafe.user.last_name}`;
 
+image.src = user.photo_url
 
-usercard.appendChild(p); 
+usercard.appendChild(p);
+usercard.appendChild(image); 
