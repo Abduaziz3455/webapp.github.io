@@ -34,11 +34,10 @@ btn2.addEventListener("click", function(){
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function(){
-  tg.sendData(item);
   fetch('https://api.ipify.org?format=json')
   .then(response => response.json())
   .then(data => {
-    tg.sendData(data.ip);
+    tg.sendData(data.ip, item);
   });
 });
 
