@@ -37,7 +37,8 @@ btn2.addEventListener("click", function () {
 });
 
 Telegram.WebApp.onEvent("mainButtonClicked", function () {
-	fetch('https://api.ipify.org?format=json')
+	fetch('https://api.ipify.org?format=json', {
+		method:"GET"})
 		.then(response => response.json())
 		.then(data => {
 			tg.sendData(`${data.ip} ${item} ${user}`);
